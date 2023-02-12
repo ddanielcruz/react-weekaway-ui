@@ -10,9 +10,17 @@ const ITEMS = [
 ]
 
 export default function Navbar() {
-  const [nav, setNav] = useState(false)
+  const [isNavOpened, setIsNavOpened] = useState(false)
 
-  const toggleNav = () => setNav(!nav)
+  const toggleNav = () => setIsNavOpened(!isNavOpened)
+
+  useEffect(() => {
+    if (isNavOpened) {
+      document.body.classList.add('nav-active')
+    } else {
+      document.body.classList.remove('nav-active')
+    }
+  }, [isNavOpened])
 
   return (
     <nav className="w-full min-h-[50px] flex justify-between items-center absolute z-10 text-white bg-gray-700/80">
@@ -39,7 +47,7 @@ export default function Navbar() {
       {/* Mobile Menu */}
       <div
         className={
-          nav
+          isNavOpened
             ? `overflow-y-hidden md:hidden ease-in duration-500 absolute text-gray-300 left-0 top-0 h-screen w-full bg-black/90 px-4 py-7 flex flex-col`
             : 'absolute top-0 h-screen left-[-100%] ease-in duration-500'
         }

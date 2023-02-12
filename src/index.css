@@ -30,3 +30,7 @@
     @apply text-xl font-bold;
   }
 }
+
+body.nav-active {
+  overflow: hidden;
+}
