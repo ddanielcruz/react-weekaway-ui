@@ -1,11 +1,10 @@
 import { useState, useEffect } from 'react'
 import { FaBars, FaTwitter, FaFacebookF, FaGoogle, FaInstagram } from 'react-icons/fa'
-import { BsChatSquareDots } from 'react-icons/bs'
 
 const ITEMS = [
   { label: 'Home', href: '/' },
+  { label: 'Booking', href: '#booking' },
   { label: 'Gallery', href: '#gallery' },
-  { label: 'Deals', href: '#deals' },
   { label: 'Contact', href: '#contact' }
 ]
 
@@ -48,14 +47,16 @@ export default function Navbar() {
       <div
         className={
           isNavOpened
-            ? `overflow-y-hidden md:hidden ease-in duration-500 absolute text-gray-300 left-0 top-0 h-screen w-full bg-black/90 px-4 py-7 flex flex-col`
-            : 'absolute top-0 h-screen left-[-100%] ease-in duration-500'
+            ? `overflow-y-hidden md:hidden ease-in duration-300 absolute text-gray-300 left-0 top-0 h-screen w-full bg-black/90 px-4 py-7 flex flex-col`
+            : 'absolute top-0 h-screen left-[-100%] ease-in duration-300'
         }
       >
         <ul className="h-full w-full text-center pt-12">
           {ITEMS.map(({ label, href }) => (
             <li key={label} className="text-2xl py-8">
-              <a href={href}>{label}</a>
+              <a href={href} onClick={toggleNav}>
+                {label}
+              </a>
             </li>
           ))}
         </ul>
